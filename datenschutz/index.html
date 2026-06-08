@@ -19,8 +19,8 @@ html{scroll-behavior:smooth}
 body{font-family:var(--inter);background:var(--white);color:var(--ink);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased}
 nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.88);backdrop-filter:blur(16px);border-bottom:1px solid var(--gray-line)}
 .nav-inner{max-width:860px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;height:66px}
-.logo{font-family:var(--grotesk);font-size:22px;font-weight:600;color:var(--ink);text-decoration:none;letter-spacing:-.02em;display:flex;align-items:center;gap:8px}
-.logo-dot{width:9px;height:9px;border-radius:50%;background:var(--blue);box-shadow:0 0 10px rgba(37,99,235,.4)}
+.logo{text-decoration:none;display:flex;align-items:center}
+.logo img{height:38px;width:auto}
 .back{font-size:14px;color:var(--ink-mid);text-decoration:none;display:flex;align-items:center;gap:5px;transition:color .2s}
 .back:hover{color:var(--blue)}
 .wrap{max-width:860px;margin:0 auto;padding:60px 1.5rem 100px}
@@ -49,8 +49,10 @@ footer{background:linear-gradient(135deg,#1d4ed8,#2563eb);border-top:none;margin
 <body>
 <nav>
   <div class="nav-inner">
-    <a href="index.html" class="logo"><span class="logo-dot"></span>Digizo</a>
-    <a href="index.html" class="back">← Zurück zur Startseite</a>
+    <a href="/index.html" class="logo">
+      <img src="/logo.jpeg" alt="Digizo Logo">
+    </a>
+    <a href="/index.html" class="back">← Zurück zur Startseite</a>
   </div>
 </nav>
 
