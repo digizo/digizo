@@ -52,7 +52,6 @@ body{font-family:var(--inter);background:var(--white);color:var(--ink);font-size
 nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--gray-line)}
 .nav-inner{max-width:var(--max);margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;height:66px}
 .logo{font-family:var(--grotesk);font-size:23px;font-weight:600;color:var(--ink);text-decoration:none;letter-spacing:-.02em;display:flex;align-items:center;gap:8px}
-.logo-dot{width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--blue-sky));box-shadow:0 0 12px rgba(37,99,235,.5)}
 .nav-links{display:flex;gap:1.8rem;list-style:none;align-items:center}
 .nav-links a{font-size:14px;color:var(--ink-mid);text-decoration:none;transition:color .2s}
 .nav-links a:hover{color:var(--ink)}
@@ -254,7 +253,9 @@ textarea:focus{
 
 <nav>
   <div class="nav-inner">
-    <a href="#" class="logo"><span class="logo-dot"></span>Digizo</a>
+    <a href="#" class="logo">
+  <img src="logo.png" alt="Digizo" style="height:40px;width:auto;">
+</a>
     <ul class="nav-links">
       <li><a href="#wie">So funktioniert's</a></li>
       <li><a href="#vorteile">Vorteile</a></li>
@@ -426,7 +427,7 @@ textarea:focus{
 
     <div class="footer-links">
       <a href="impressum.html">Impressum</a>
-      <a href="datenschutz.html">Datenschutz</a>
+      <a href="/datenschutz">Datenschutz</a>
     </div>
   </div>
 </footer>
