@@ -3,59 +3,40 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Digizo – KI-Chatbots für Ihr Unternehmen</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<title>Digizo – Digitale Lösungen für Ihr Unternehmen</title>
 <style>
+@font-face{font-family:'Space Grotesk';src:local('Space Grotesk'),local('SpaceGrotesk');font-weight:400 700;font-display:swap}
+@font-face{font-family:'Inter';src:local('Inter');font-weight:300 500;font-display:swap}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --blue:#2563eb;
-  --blue-dark:#1d4ed8;
-  --blue-light:#dbeafe;
-  --blue-pale:#eff6ff;
-  --blue-accent:#3b82f6;
-  --blue-sky:#60a5fa;
-  --ink:#0f172a;
-  --ink-mid:#475569;
-  --ink-soft:#94a3b8;
-  --white:#ffffff;
-  --gray-bg:#f8fafc;
-  --gray-line:#e2e8f0;
+  --blue:#2563eb;--blue-dark:#1d4ed8;--blue-light:#dbeafe;--blue-pale:#eff6ff;
+  --blue-sky:#60a5fa;--ink:#0f172a;--ink-mid:#475569;--ink-soft:#94a3b8;
+  --white:#fff;--gray-bg:#f8fafc;--gray-line:#e2e8f0;
   --grotesk:'Space Grotesk',system-ui,sans-serif;
   --inter:'Inter',system-ui,sans-serif;
-  --r:12px;
-  --max:1140px;
+  --r:12px;--max:1140px;
 }
 html{scroll-behavior:smooth}
 body{font-family:var(--inter);background:var(--white);color:var(--ink);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 
-/* Section backgrounds */
-.bg-blue-soft{background:#e8f1fd}
-.bg-blue-mid{background:#dbeafe}
-.bg-blue-stripe{background:repeating-linear-gradient(135deg,#eff6ff 0px,#eff6ff 24px,#dbeafe 24px,#dbeafe 25px)}
-.bg-indigo{background:linear-gradient(135deg,#eef2ff 0%,#dbeafe 100%)}
-
-/* 3D CANVAS - only behind hero */
+/* 3D CANVAS */
 #bg-canvas{position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none}
 .hero-wrap{position:relative;overflow:hidden}
 .hero-wrap::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:140px;background:linear-gradient(to bottom,transparent,var(--white));z-index:1;pointer-events:none}
-
-/* Decorative blobs */
 .blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:.4;z-index:0;pointer-events:none}
 .blob-1{width:380px;height:380px;background:var(--blue-light);top:-100px;right:-80px}
 .blob-2{width:300px;height:300px;background:#e0e7ff;bottom:-60px;left:-60px}
 
 /* NAV */
-nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--gray-line)}
-.nav-inner{max-width:var(--max);margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;height:66px}
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.88);backdrop-filter:blur(16px);border-bottom:1px solid var(--gray-line)}
+.nav-inner{max-width:var(--max);margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;height:88px}
 .logo{text-decoration:none;display:flex;align-items:center}
+.logo img{height:72px;width:auto}
 .nav-links{display:flex;gap:1.8rem;list-style:none;align-items:center}
 .nav-links a{font-size:14px;color:var(--ink-mid);text-decoration:none;transition:color .2s}
 .nav-links a:hover{color:var(--ink)}
-.nav-cta{background:var(--blue);color:#fff !important;padding:9px 18px;border-radius:10px;font-weight:500 !important;transition:background .2s,transform .2s,box-shadow .2s}
-.nav-cta:hover{background:var(--blue-dark);transform:translateY(-1px);box-shadow:0 6px 18px rgba(37,99,235,.3)}
+.nav-cta{background:var(--blue);color:#fff !important;padding:9px 18px;border-radius:10px;font-weight:500 !important;transition:background .2s,transform .2s}
+.nav-cta:hover{background:var(--blue-dark);transform:translateY(-1px)}
 
 /* HERO */
 .hero{max-width:var(--max);margin:0 auto;padding:90px 1.5rem 110px;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;position:relative;z-index:2}
@@ -68,7 +49,7 @@ nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.85);backdrop
 .hero-btns{display:flex;gap:12px;flex-wrap:wrap}
 .btn-primary{background:var(--blue);color:#fff;padding:14px 28px;border-radius:var(--r);font-size:15px;font-weight:500;text-decoration:none;transition:background .2s,transform .2s,box-shadow .2s;display:inline-block;box-shadow:0 6px 20px rgba(37,99,235,.25)}
 .btn-primary:hover{background:var(--blue-dark);transform:translateY(-2px);box-shadow:0 12px 30px rgba(37,99,235,.35)}
-.btn-ghost{background:rgba(255,255,255,.7);backdrop-filter:blur(8px);border:1px solid var(--gray-line);color:var(--ink);padding:14px 28px;border-radius:var(--r);font-size:15px;font-weight:400;text-decoration:none;transition:border-color .2s,background .2s;display:inline-block}
+.btn-ghost{background:rgba(255,255,255,.7);border:1px solid var(--gray-line);color:var(--ink);padding:14px 28px;border-radius:var(--r);font-size:15px;font-weight:400;text-decoration:none;transition:border-color .2s,background .2s;display:inline-block}
 .btn-ghost:hover{border-color:var(--blue);background:var(--blue-pale)}
 
 /* CHAT MOCKUP */
@@ -81,21 +62,16 @@ nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.85);backdrop
 .chat-online::before{content:'';width:6px;height:6px;background:var(--blue);border-radius:50%;animation:pulse 2s infinite}
 .msgs{display:flex;flex-direction:column;gap:9px}
 .b{max-width:88%;padding:11px 15px;font-size:14px;line-height:1.55;border-radius:14px;animation:msgIn .5s ease backwards}
-.b:nth-child(1){animation-delay:.2s}
-.b:nth-child(2){animation-delay:.6s}
-.b:nth-child(3){animation-delay:1s}
-.b:nth-child(4){animation-delay:1.4s}
-.typing-dots{animation-delay:1.8s}
+.b:nth-child(1){animation-delay:.2s}.b:nth-child(2){animation-delay:.6s}.b:nth-child(3){animation-delay:1s}.b:nth-child(4){animation-delay:1.4s}
 @keyframes msgIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 .b.bot{background:var(--gray-bg);color:var(--ink);border-radius:4px 14px 14px 14px;align-self:flex-start}
 .b.user{background:var(--blue);color:#fff;border-radius:14px 4px 14px 14px;align-self:flex-end}
-.typing-dots{background:var(--gray-bg);border-radius:4px 14px 14px 14px;padding:11px 15px;display:inline-flex;gap:4px;align-items:center;align-self:flex-start;animation:msgIn .5s ease backwards}
+.typing-dots{background:var(--gray-bg);border-radius:4px 14px 14px 14px;padding:11px 15px;display:inline-flex;gap:4px;align-items:center;align-self:flex-start;animation:msgIn .5s ease backwards;animation-delay:1.8s}
 .typing-dots span{width:6px;height:6px;background:var(--ink-soft);border-radius:50%;animation:td 1.2s infinite}
-.typing-dots span:nth-child(2){animation-delay:.2s}
-.typing-dots span:nth-child(3){animation-delay:.4s}
+.typing-dots span:nth-child(2){animation-delay:.2s}.typing-dots span:nth-child(3){animation-delay:.4s}
 @keyframes td{0%,80%,100%{transform:translateY(0);opacity:.4}40%{transform:translateY(-5px);opacity:1}}
 
-/* INDUSTRIES STRIP */
+/* INDUSTRIES */
 .industries{background:var(--gray-bg);border-top:1px solid var(--gray-line);border-bottom:1px solid var(--gray-line);padding:22px 1.5rem;position:relative;z-index:2}
 .ind-inner{max-width:var(--max);margin:0 auto;display:flex;align-items:center;gap:16px;flex-wrap:wrap;justify-content:center}
 .ind-label{font-size:12px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.08em}
@@ -110,10 +86,26 @@ section{position:relative}
 .section-title{font-family:var(--grotesk);font-size:clamp(28px,4vw,42px);font-weight:600;letter-spacing:-.02em;line-height:1.15;margin-bottom:16px}
 .section-sub{font-size:17px;color:var(--ink-mid);font-weight:300;max-width:560px;margin:0 auto;line-height:1.7;padding:14px 24px;background:#dbeafe;border-radius:14px;display:inline-block}
 
-/* WIE ES FUNKTIONIERT */
+/* LEISTUNGEN */
+#leistungen{background:var(--gray-bg)}
+.leistungen-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
+.leistung-card{background:var(--white);border:1px solid var(--gray-line);border-radius:20px;padding:32px;transition:transform .25s,box-shadow .25s,border-color .25s;position:relative;overflow:hidden}
+.leistung-card::after{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,var(--blue),var(--blue-sky));transform:scaleX(0);transform-origin:left;transition:transform .3s}
+.leistung-card:hover::after{transform:scaleX(1)}
+.leistung-card:hover{transform:translateY(-5px);box-shadow:0 20px 44px rgba(37,99,235,.12);border-color:var(--blue-light)}
+.leistung-icon{width:56px;height:56px;border-radius:16px;background:linear-gradient(135deg,var(--blue-pale),var(--blue-light));display:flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:20px;transition:transform .25s}
+.leistung-card:hover .leistung-icon{transform:scale(1.08) rotate(-4deg)}
+.leistung-card h3{font-family:var(--grotesk);font-size:20px;font-weight:600;margin-bottom:10px}
+.leistung-card p{font-size:14px;color:var(--ink-mid);font-weight:300;line-height:1.7;margin-bottom:16px}
+.leistung-list{list-style:none;display:flex;flex-direction:column;gap:7px;margin-bottom:20px}
+.leistung-list li{font-size:13px;color:var(--ink-mid);display:flex;gap:7px;align-items:flex-start}
+.leistung-list li::before{content:'✓';color:var(--blue);font-weight:600;flex-shrink:0}
+.leistung-price{font-family:var(--grotesk);font-size:15px;font-weight:600;color:var(--blue);padding:8px 14px;background:var(--blue-pale);border-radius:8px;display:inline-block}
+
+/* WIE */
 #wie{background:#e8f1fd;position:relative;overflow:hidden}
 #wie::before{content:'';position:absolute;top:-120px;right:-120px;width:340px;height:340px;background:radial-gradient(circle,var(--blue-light),transparent 70%);opacity:.5;border-radius:50%}
-.steps-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;position:relative}
+.steps-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px}
 .step-card{background:var(--white);border:1px solid var(--gray-line);border-radius:16px;padding:28px;transition:transform .25s,box-shadow .25s;position:relative;overflow:hidden}
 .step-card::after{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,var(--blue),var(--blue-sky));transform:scaleX(0);transform-origin:left;transition:transform .3s}
 .step-card:hover::after{transform:scaleX(1)}
@@ -123,8 +115,9 @@ section{position:relative}
 .step-card p{font-size:14px;color:var(--ink-mid);font-weight:300;line-height:1.65}
 
 /* VORTEILE */
+#vorteile{background:linear-gradient(135deg,#eef2ff 0%,#dbeafe 100%)}
 .benefits-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
-.benefit{background:var(--white);border:1px solid var(--gray-line);border-radius:16px;padding:28px;transition:border-color .25s,transform .25s,box-shadow .25s;position:relative}
+.benefit{background:var(--white);border:1px solid var(--gray-line);border-radius:16px;padding:28px;transition:border-color .25s,transform .25s,box-shadow .25s}
 .benefit:hover{border-color:var(--blue-light);transform:translateY(-4px);box-shadow:0 18px 40px rgba(37,99,235,.1)}
 .benefit-icon{width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,var(--blue-pale),var(--blue-light));display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:18px;transition:transform .25s}
 .benefit:hover .benefit-icon{transform:scale(1.08) rotate(-4deg)}
@@ -135,18 +128,19 @@ section{position:relative}
 #preise{background:#dbeafe;position:relative;overflow:hidden}
 #preise::before{content:'';position:absolute;bottom:-100px;left:-100px;width:320px;height:320px;background:radial-gradient(circle,var(--blue-light),transparent 70%);opacity:.45;border-radius:50%}
 .preise-note{font-size:15px;color:var(--ink-mid);font-weight:300;line-height:1.7;max-width:600px;margin:0 auto;text-align:center;background:var(--white);border:1px solid var(--gray-line);border-radius:14px;padding:20px 24px;position:relative}
-.preise-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:40px;max-width:740px;margin-left:auto;margin-right:auto;position:relative}
-.p-card{background:var(--white);border:1px solid var(--gray-line);border-radius:18px;padding:30px;transition:transform .25s,box-shadow .25s}
+.preise-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-top:40px;max-width:900px;margin-left:auto;margin-right:auto}
+.p-card{background:var(--white);border:1px solid var(--gray-line);border-radius:18px;padding:28px;transition:transform .25s,box-shadow .25s}
 .p-card:hover{transform:translateY(-4px);box-shadow:0 20px 44px rgba(15,23,42,.1)}
 .p-card.main{border:2px solid var(--blue);box-shadow:0 16px 40px rgba(37,99,235,.15)}
 .p-tag{font-size:11px;text-transform:uppercase;letter-spacing:.1em;font-weight:600;color:var(--blue);margin-bottom:10px}
-.p-price{font-family:var(--grotesk);font-size:38px;font-weight:600;letter-spacing:-.02em;line-height:1;margin-bottom:4px}
+.p-icon{font-size:24px;margin-bottom:12px}
+.p-price{font-family:var(--grotesk);font-size:34px;font-weight:600;letter-spacing:-.02em;line-height:1;margin-bottom:4px}
 .p-period{font-size:13px;color:var(--ink-soft);margin-bottom:8px}
-.p-desc{font-size:14px;color:var(--ink-mid);font-weight:300;margin-bottom:20px;line-height:1.6}
-.p-list{list-style:none;display:flex;flex-direction:column;gap:9px;margin-bottom:22px}
-.p-list li{font-size:14px;display:flex;gap:8px;align-items:flex-start;color:var(--ink-mid)}
+.p-desc{font-size:14px;color:var(--ink-mid);font-weight:300;margin-bottom:18px;line-height:1.6}
+.p-list{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:20px}
+.p-list li{font-size:13px;display:flex;gap:7px;align-items:flex-start;color:var(--ink-mid)}
 .p-list li::before{content:'✓';color:var(--blue);font-weight:600;flex-shrink:0}
-.btn-card{display:block;width:100%;padding:12px;border-radius:var(--r);font-size:14px;font-weight:500;text-align:center;text-decoration:none;transition:background .2s,border-color .2s}
+.btn-card{display:block;width:100%;padding:11px;border-radius:var(--r);font-size:14px;font-weight:500;text-align:center;text-decoration:none;transition:background .2s,border-color .2s}
 .btn-card-out{background:var(--white);border:1px solid var(--gray-line);color:var(--ink)}
 .btn-card-out:hover{border-color:var(--blue);background:var(--blue-pale)}
 .btn-card-fill{background:var(--blue);border:none;color:#fff}
@@ -173,43 +167,15 @@ section{position:relative}
 .form-row input{flex:1;min-width:200px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);border-radius:var(--r);padding:14px 18px;font-size:15px;color:#fff;font-family:var(--inter);outline:none;transition:background .2s,border-color .2s}
 .form-row input::placeholder{color:rgba(255,255,255,.6)}
 .form-row input:focus{background:rgba(255,255,255,.22);border-color:rgba(255,255,255,.6)}
-.btn-white{background:#fff;color:var(--blue);padding:14px 26px;border-radius:var(--r);font-size:15px;font-weight:600;text-decoration:none;border:none;cursor:pointer;font-family:var(--inter);transition:transform .2s,box-shadow .2s}
+.btn-white{background:#fff;color:var(--blue);padding:14px 26px;border-radius:var(--r);font-size:15px;font-weight:600;border:none;cursor:pointer;font-family:var(--inter);transition:transform .2s,box-shadow .2s}
 .btn-white:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(0,0,0,.2)}
 
 /* FOOTER */
-footer{
-  background:linear-gradient(135deg,#1d4ed8,#2563eb);
-  border-top:none;
-  margin-top:90px;
-}
-
-.footer-inner{
-  max-width:1140px;
-  margin:0 auto;
-  padding:24px 32px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  flex-wrap:wrap;
-  gap:12px;
-  font-size:14px;
-  color:rgba(255,255,255,.8);
-}
-
-.footer-links{
-  display:flex;
-  gap:24px;
-}
-
-.footer-links a{
-  color:rgba(255,255,255,.8);
-  text-decoration:none;
-  transition:.2s;
-}
-
-.footer-links a:hover{
-  color:#ffffff;
-}
+footer{background:linear-gradient(135deg,#1d4ed8,#2563eb);border-top:none;margin-top:90px}
+.footer-inner{max-width:var(--max);margin:0 auto;padding:24px 32px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:14px;color:rgba(255,255,255,.8)}
+.footer-links{display:flex;gap:24px}
+.footer-links a{color:rgba(255,255,255,.8);text-decoration:none;transition:.2s}
+.footer-links a:hover{color:#fff}
 
 /* REVEAL */
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s cubic-bezier(.2,.8,.2,1),transform .6s cubic-bezier(.2,.8,.2,1)}
@@ -222,19 +188,9 @@ footer{
   .hero-visual{order:-1}
   .nav-links{display:none}
 }
-textarea{
-  color:white;
-}
-
-textarea::placeholder{
-  color:rgba(255,255,255,.6);
-}
-
-textarea:focus{
-  outline:none;
-  background:rgba(255,255,255,.22);
-  border-color:rgba(255,255,255,.6);
-}
+textarea{color:#fff !important}
+textarea::placeholder{color:rgba(255,255,255,.6) !important}
+textarea:focus{outline:none;background:rgba(255,255,255,.22) !important;border-color:rgba(255,255,255,.6) !important}
 @media(max-width:600px){
   .section-pad{padding:60px 1.25rem}
   .cta-inner{padding:44px 22px}
@@ -244,7 +200,8 @@ textarea:focus{
   .form-row input,.btn-white{width:100%}
   .chat-card{padding:18px}
   .b{font-size:13px}
-  .blob-1,.blob-2{opacity:.25}
+  textarea{color:white}
+  textarea::placeholder{color:rgba(255,255,255,.6)}
 }
 </style>
 </head>
@@ -252,30 +209,30 @@ textarea:focus{
 
 <nav>
   <div class="nav-inner">
-    <a href="#" class="logo"><img src="logo.png" alt="Digizo" style="height:56px;width:auto;"></a>
+    <a href="#" class="logo"><img src="logo.png" alt="Digizo" style="height:72px;width:auto;"></a>
     <ul class="nav-links">
+      <li><a href="#leistungen">Leistungen</a></li>
       <li><a href="#wie">So funktioniert's</a></li>
-      <li><a href="#vorteile">Vorteile</a></li>
       <li><a href="#preise">Preise</a></li>
       <li><a href="#faq">FAQ</a></li>
-      <li><a href="#kontakt" class="nav-cta">Kostenlos testen</a></li>
+      <li><a href="#kontakt" class="nav-cta">Kostenlos anfragen</a></li>
     </ul>
   </div>
 </nav>
 
-<!-- HERO with 3D bg -->
+<!-- HERO -->
 <div class="hero-wrap">
   <canvas id="bg-canvas"></canvas>
   <div class="blob blob-1"></div>
   <div class="blob blob-2"></div>
   <header class="hero">
     <div class="reveal">
-      <div class="hero-badge"><span class="hero-badge-dot"></span>KI-Chatbots für kleine Unternehmen</div>
-      <h1>Ihre Kunden fragen.<br><span class="blue">Ihr Bot antwortet.</span></h1>
-      <p>Digizo richtet intelligente Chatbots ein, die Kundenfragen rund um die Uhr automatisch beantworten – direkt auf Ihrer Website. Ohne technischen Aufwand für Sie.</p>
+      <div class="hero-badge"><span class="hero-badge-dot"></span>Digitale Lösungen für kleine Unternehmen</div>
+      <h1>Mehr Kunden.<br><span class="blue">Weniger Aufwand.</span></h1>
+      <p>Digizo hilft kleinen Unternehmen dabei, digital sichtbar und erreichbar zu werden – mit KI-Chatbots, modernen Websites und Google-Optimierung.</p>
       <div class="hero-btns">
-        <a href="#kontakt" class="btn-primary">Kostenlose Demo</a>
-        <a href="#wie" class="btn-ghost">Wie es funktioniert</a>
+        <a href="#kontakt" class="btn-primary">Kostenlose Beratung</a>
+        <a href="#leistungen" class="btn-ghost">Unsere Leistungen</a>
       </div>
     </div>
     <div class="hero-visual reveal d1">
@@ -289,8 +246,8 @@ textarea:focus{
         </div>
         <div class="msgs">
           <div class="b bot">Hallo! Wie kann ich Ihnen helfen? Ich beantworte gerne Fragen zu Leistungen, Preisen oder Terminen.</div>
-          <div class="b user">Was kostet eine Beratung?</div>
-          <div class="b bot">Unsere Erstberatung ist kostenlos und unverbindlich. Möchten Sie gleich einen Termin vereinbaren?</div>
+          <div class="b user">Was kostet eine neue Website?</div>
+          <div class="b bot">Eine moderne Website beginnt ab 799 €. Soll ich Ihnen mehr dazu erklären?</div>
           <div class="b user">Ja, gerne!</div>
           <div class="typing-dots"><span></span><span></span><span></span></div>
         </div>
@@ -312,7 +269,60 @@ textarea:focus{
   </div>
 </div>
 
-<!-- WIE -->
+<!-- LEISTUNGEN -->
+<section id="leistungen">
+  <div class="section-pad" style="background:var(--gray-bg)">
+    <div class="section-head reveal">
+      <div class="section-label">Leistungen</div>
+      <h2 class="section-title">Alles aus einer Hand</h2>
+      <p class="section-sub">Ich kümmere mich um Ihre digitale Präsenz – von A bis Z, persönlich und zuverlässig.</p>
+    </div>
+    <div class="leistungen-grid">
+
+      <div class="leistung-card reveal">
+        <div class="leistung-icon">💬</div>
+        <h3>KI-Chatbot</h3>
+        <p>Ein intelligenter Assistent der Kundenfragen rund um die Uhr automatisch beantwortet – direkt auf Ihrer Website.</p>
+        <ul class="leistung-list">
+          <li>24/7 erreichbar für Ihre Kunden</li>
+          <li>Individuell auf Ihr Unternehmen trainiert</li>
+          <li>Weniger Telefonate, mehr Zeit</li>
+          <li>DSGVO-konform eingerichtet</li>
+        </ul>
+        <span class="leistung-price">ab 599 € + 49 €/Mo</span>
+      </div>
+
+      <div class="leistung-card reveal d1">
+        <div class="leistung-icon">🌐</div>
+        <h3>Website erstellen</h3>
+        <p>Eine moderne, schnelle und mobiloptimierte Website die Vertrauen schafft und aus Besuchern Kunden macht.</p>
+        <ul class="leistung-list">
+          <li>Professionelles Design</li>
+          <li>Mobiloptimiert & schnell</li>
+          <li>Kontaktformular & Impressum</li>
+          <li>DSGVO-konform & SSL</li>
+        </ul>
+        <span class="leistung-price">ab 799 €</span>
+      </div>
+
+      <div class="leistung-card reveal d2">
+        <div class="leistung-icon">📍</div>
+        <h3>Google My Business</h3>
+        <p>Mehr Sichtbarkeit bei Google – damit Kunden Sie finden, Ihnen vertrauen und bei Ihnen anfragen.</p>
+        <ul class="leistung-list">
+          <li>Profil einrichten & optimieren</li>
+          <li>Fotos, Öffnungszeiten, Infos</li>
+          <li>Bewertungen im Blick behalten</li>
+          <li>Monatliche Pflege</li>
+        </ul>
+        <span class="leistung-price">ab 199 € + 49 €/Mo</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- WIE ES FUNKTIONIERT -->
 <section id="wie">
   <div class="section-pad">
     <div class="section-head reveal">
@@ -321,29 +331,29 @@ textarea:focus{
       <p class="section-sub">Kein technisches Wissen nötig. Ich übernehme alles – Sie liefern nur die Informationen.</p>
     </div>
     <div class="steps-grid">
-      <div class="step-card reveal"><div class="step-num">01</div><h3>Wir sprechen</h3><p>In einem kurzen Gespräch lerne ich Ihr Unternehmen kennen und verstehe, welche Fragen Ihre Kunden häufig stellen.</p></div>
-      <div class="step-card reveal d1"><div class="step-num">02</div><h3>Sie liefern Infos</h3><p>Leistungen, Preise, Öffnungszeiten – als einfache E-Mail oder Liste. Kein aufwendiges Format nötig.</p></div>
-      <div class="step-card reveal d2"><div class="step-num">03</div><h3>Ich richte ein</h3><p>Ich konfiguriere Ihren persönlichen Bot und baue ihn auf Ihrer Website ein – meist in 2–4 Werktagen.</p></div>
-      <div class="step-card reveal d3"><div class="step-num">04</div><h3>Live & betreut</h3><p>Ihr Bot geht online. Ich halte ihn aktuell und schicke Ihnen monatlich einen kurzen Bericht.</p></div>
+      <div class="step-card reveal"><div class="step-num">01</div><h3>Wir sprechen</h3><p>In einem kurzen Gespräch lerne ich Ihr Unternehmen kennen und verstehe was Sie brauchen.</p></div>
+      <div class="step-card reveal d1"><div class="step-num">02</div><h3>Sie liefern Infos</h3><p>Leistungen, Preise, Fotos – als einfache E-Mail oder Liste. Kein aufwendiges Format nötig.</p></div>
+      <div class="step-card reveal d2"><div class="step-num">03</div><h3>Ich richte ein</h3><p>Ich baue alles fertig und liefere es innerhalb weniger Werktage – ohne Aufwand für Sie.</p></div>
+      <div class="step-card reveal d3"><div class="step-num">04</div><h3>Live & betreut</h3><p>Alles geht online. Ich bleibe Ihr Ansprechpartner und halte alles aktuell.</p></div>
     </div>
   </div>
 </section>
 
 <!-- VORTEILE -->
-<section id="vorteile" class="bg-indigo">
-  <div class="section-pad">
+<section id="vorteile">
+  <div class="section-pad" style="background:linear-gradient(135deg,#eef2ff 0%,#dbeafe 100%)">
     <div class="section-head reveal">
       <div class="section-label">Warum Digizo</div>
-      <h2 class="section-title">Immer erreichbar für Ihre Kunden</h2>
-      <p class="section-sub">Kunden erwarten schnelle Antworten. Ihr Bot liefert sie – Tag und Nacht.</p>
+      <h2 class="section-title">Persönlich, schnell, zuverlässig</h2>
+      <p class="section-sub">Kein großes Unternehmen – ein direkter Ansprechpartner der sich kümmert.</p>
     </div>
     <div class="benefits-grid">
-      <div class="benefit reveal"><div class="benefit-icon">⏰</div><h3>24/7 erreichbar</h3><p>Ihr Bot antwortet sofort – auch nachts, am Wochenende und an Feiertagen. Keine Anfrage geht verloren.</p></div>
-      <div class="benefit reveal d1"><div class="benefit-icon">💬</div><h3>Weniger Telefonate</h3><p>Häufige Fragen werden automatisch beantwortet. Ihr Team gewinnt wertvolle Zeit zurück.</p></div>
-      <div class="benefit reveal d2"><div class="benefit-icon">📋</div><h3>Qualifizierte Anfragen</h3><p>Der Bot sammelt die wichtigsten Infos, bevor er weiterleitet – Sie erhalten nur ernsthafte Anfragen.</p></div>
-      <div class="benefit reveal"><div class="benefit-icon">🔒</div><h3>DSGVO-konform</h3><p>Alle Daten datenschutzkonform verarbeitet – inklusive fertiger Datenschutz-Texte für Ihre Website.</p></div>
-      <div class="benefit reveal d1"><div class="benefit-icon">📱</div><h3>Auf allen Geräten</h3><p>Der Bot passt sich automatisch an – ob Desktop, Tablet oder Smartphone. Immer perfekt bedienbar.</p></div>
-      <div class="benefit reveal d2"><div class="benefit-icon">🤝</div><h3>Persönliche Betreuung</h3><p>Ein fester Ansprechpartner. Sie schreiben kurz, ich kümmere mich – schnell und zuverlässig.</p></div>
+      <div class="benefit reveal"><div class="benefit-icon">🤝</div><h3>Persönlicher Kontakt</h3><p>Sie haben meine direkte Nummer. Keine Warteschleifen, kein Callcenter – ich antworte persönlich.</p></div>
+      <div class="benefit reveal d1"><div class="benefit-icon">⚡</div><h3>Schnelle Umsetzung</h3><p>Kein monatelanger Prozess. Von der Anfrage bis zur fertigen Lösung in wenigen Tagen.</p></div>
+      <div class="benefit reveal d2"><div class="benefit-icon">💰</div><h3>Faire Preise</h3><p>Keine versteckten Kosten. Klare Angebote, transparente Preise – passend für kleine Unternehmen.</p></div>
+      <div class="benefit reveal"><div class="benefit-icon">🔒</div><h3>DSGVO-konform</h3><p>Alle Lösungen datenschutzkonform eingerichtet – inklusive aller nötigen Dokumente und Texte.</p></div>
+      <div class="benefit reveal d1"><div class="benefit-icon">📱</div><h3>Mobiloptimiert</h3><p>Alle Lösungen funktionieren perfekt auf Smartphones – wo die meisten Ihrer Kunden surfen.</p></div>
+      <div class="benefit reveal d2"><div class="benefit-icon">📊</div><h3>Monatliche Berichte</h3><p>Sie sehen was passiert – monatliche Zusammenfassung was gut läuft und was verbessert wurde.</p></div>
     </div>
   </div>
 </section>
@@ -355,41 +365,65 @@ textarea:focus{
       <div class="section-label">Preise</div>
       <h2 class="section-title">Transparent & fair</h2>
     </div>
-    <p class="preise-note reveal">Die genauen Kosten hängen davon ab, was Ihr Unternehmen braucht. Unten sehen Sie meine Richtwerte – im kostenlosen Gespräch machen wir gemeinsam ein konkretes Angebot.</p>
+    <p class="preise-note reveal">Alle Preise sind Richtwerte – im kostenlosen Erstgespräch machen wir ein konkretes Angebot für Ihr Unternehmen.</p>
     <div class="preise-cards">
       <div class="p-card reveal">
-        <div class="p-tag">Einrichtung</div>
+        <div class="p-icon">💬</div>
+        <div class="p-tag">KI-Chatbot</div>
         <div class="p-price">ab 599 €</div>
-        <div class="p-period">einmalig</div>
-        <p class="p-desc">Ihr persönlicher Bot, eingerichtet und auf Ihrer Website eingebaut.</p>
-        <ul class="p-list"><li>Individuell auf Ihr Unternehmen</li><li>Integration in Ihre Website</li><li>E-Mail-Weiterleitung</li><li>Einweisung für Sie</li></ul>
+        <div class="p-period">einmalig + ab 49 €/Mo</div>
+        <p class="p-desc">Intelligenter Assistent für Ihre Website.</p>
+        <ul class="p-list">
+          <li>Einrichtung & Integration</li>
+          <li>Individuelle Konfiguration</li>
+          <li>Monatliche Betreuung</li>
+        </ul>
         <a href="#kontakt" class="btn-card btn-card-out">Anfragen</a>
       </div>
       <div class="p-card main reveal d1">
-        <div class="p-tag">Monatliche Betreuung</div>
-        <div class="p-price">ab 24 €</div>
-        <div class="p-period">pro Monat</div>
-        <p class="p-desc">Ich bleibe für Sie da – Pflege, Updates und Support inklusive.</p>
-        <ul class="p-list"><li>Laufende Inhaltspflege</li><li>Monatlicher Bericht</li><li>Direkter Ansprechpartner</li><li>Reaktionszeit unter 24 h</li></ul>
+        <div class="p-icon">🌐</div>
+        <div class="p-tag">Website</div>
+        <div class="p-price">ab 799 €</div>
+        <div class="p-period">einmalig</div>
+        <p class="p-desc">Moderne Website die Kunden überzeugt.</p>
+        <ul class="p-list">
+          <li>Professionelles Design</li>
+          <li>Mobiloptimiert & schnell</li>
+          <li>DSGVO & Impressum</li>
+          <li>Kontaktformular</li>
+        </ul>
         <a href="#kontakt" class="btn-card btn-card-fill">Jetzt anfragen</a>
+      </div>
+      <div class="p-card reveal d2">
+        <div class="p-icon">📍</div>
+        <div class="p-tag">Google My Business</div>
+        <div class="p-price">ab 199 €</div>
+        <div class="p-period">einmalig + ab 49 €/Mo</div>
+        <p class="p-desc">Mehr Sichtbarkeit bei Google Maps.</p>
+        <ul class="p-list">
+          <li>Profil einrichten & optimieren</li>
+          <li>Fotos & Infos pflegen</li>
+          <li>Monatliche Aktualisierung</li>
+        </ul>
+        <a href="#kontakt" class="btn-card btn-card-out">Anfragen</a>
       </div>
     </div>
   </div>
 </section>
 
 <!-- FAQ -->
-<section id="faq" class="wash-blue">
+<section id="faq">
   <div class="section-pad">
     <div class="section-head reveal">
       <div class="section-label">Häufige Fragen</div>
       <h2 class="section-title">Gut zu wissen</h2>
     </div>
     <div class="faq-list reveal">
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Muss ich technisch versiert sein?<span class="faq-icon">+</span></button><div class="faq-a">Überhaupt nicht. Ich erkläre Ihnen alles und übernehme die komplette Einrichtung. Das Einzige was nötig ist: ein kleiner Code auf Ihrer Website – das macht auch Ihr Webmaster in wenigen Minuten.</div></div>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Wie lange dauert die Einrichtung?<span class="faq-icon">+</span></button><div class="faq-a">In der Regel 2–4 Werktage. Ich brauche nur Ihre Inhalte – Leistungen, Preise, häufige Fragen – gerne als einfache E-Mail.</div></div>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Was, wenn der Bot etwas nicht weiß?<span class="faq-icon">+</span></button><div class="faq-a">Dann leitet er den Kunden freundlich an Sie weiter – per E-Mail oder Kontaktformular. Gleichzeitig ergänze ich die fehlende Antwort bei der nächsten Aktualisierung.</div></div>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Ist das DSGVO-konform?<span class="faq-icon">+</span></button><div class="faq-a">Ja. Ich stelle Ihnen alle nötigen Datenschutz-Texte und Vereinbarungen bereit. Die Daten werden datenschutzkonform verarbeitet.</div></div>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Kann ich jederzeit kündigen?<span class="faq-icon">+</span></button><div class="faq-a">Die Einrichtung ist einmalig. Die monatliche Betreuung ist nach 3 Monaten monatlich kündbar – ohne versteckte Gebühren.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Muss ich technisch versiert sein?<span class="faq-icon">+</span></button><div class="faq-a">Überhaupt nicht. Ich erkläre alles und übernehme die komplette Einrichtung. Sie müssen sich um nichts kümmern.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Kann ich mehrere Leistungen kombinieren?<span class="faq-icon">+</span></button><div class="faq-a">Ja – und das empfehle ich sogar. Website + Chatbot + Google My Business zusammen ergibt den größten Effekt. Ich mache Ihnen gerne ein Kombi-Angebot.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Wie lange dauert die Umsetzung?<span class="faq-icon">+</span></button><div class="faq-a">Ein Chatbot ist in 2–4 Werktagen fertig. Eine Website dauert je nach Umfang 3–7 Werktage. Google My Business ist in 1–2 Tagen eingerichtet.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Ist das DSGVO-konform?<span class="faq-icon">+</span></button><div class="faq-a">Ja. Alle Lösungen werden DSGVO-konform eingerichtet. Ich stelle Ihnen alle nötigen Datenschutz-Texte und Vereinbarungen fertig bereit.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Kann ich jederzeit kündigen?<span class="faq-icon">+</span></button><div class="faq-a">Einrichtungsgebühren sind einmalig. Monatliche Betreuungen sind nach 3 Monaten monatlich kündbar – ohne versteckte Gebühren.</div></div>
     </div>
   </div>
 </section>
@@ -397,41 +431,40 @@ textarea:focus{
 <!-- KONTAKT -->
 <section id="kontakt">
   <div class="cta-inner reveal">
-    <h2>Kostenlose Demo anfordern</h2>
-    <p> Ich zeige Ihnen in 20 Minuten, wie Ihr Bot aussehen könnte – unverbindlich und kostenlos. </p> 
-<form action="https://api.web3forms.com/submit" method="POST" onsubmit="handleSubmit(event)">
-  <input type="hidden" name="access_key" value="03e7d127-ca23-4463-a398-a42f24cfddcd">
-  <input type="hidden" name="subject" value="Neue Demo-Anfrage von digizo.de">
-  <input type="hidden" name="from_name" value="Digizo Website">
-  <input type="hidden" name="redirect" value="false">
-  <div class="form-row">
-    <input type="text" name="name" placeholder="Ihr Name" required>
-    <input type="email" name="email" placeholder="Ihre E-Mail-Adresse" required>
-  </div>
-  <div style="margin-top:12px;max-width:460px;margin-left:auto;margin-right:auto;">
-    <textarea name="message" placeholder="Beschreiben Sie kurz Ihr Unternehmen und Ihre Anforderungen" rows="4" required style="width:100%;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);border-radius:12px;padding:14px 18px;font-size:15px;color:white;resize:vertical;font-family:inherit;"></textarea>
-  </div>
-  <div style="margin-top:16px;">
-    <button type="submit" class="btn-white" id="submit-btn">Kostenlose Demo anfragen</button>
-  </div>
-</form>
-
+    <h2>Kostenlose Beratung anfragen</h2>
+    <p>Ich zeige Ihnen in 20 Minuten was für Ihr Unternehmen möglich ist – unverbindlich und kostenlos.</p>
+    <form action="https://api.web3forms.com/submit" method="POST" onsubmit="handleSubmit(event)">
+      <input type="hidden" name="access_key" value="03e7d127-ca23-4463-a398-a42f24cfddcd">
+      <input type="hidden" name="subject" value="Neue Anfrage von digizo.de">
+      <input type="hidden" name="from_name" value="Digizo Website">
+      <input type="hidden" name="redirect" value="false">
+      <div class="form-row">
+        <input type="text" name="name" placeholder="Ihr Name" required>
+        <input type="email" name="email" placeholder="Ihre E-Mail-Adresse" required>
+      </div>
+      <div style="margin-top:12px;max-width:460px;margin-left:auto;margin-right:auto;">
+        <textarea name="message" placeholder="Was brauchen Sie? (Chatbot, Website, Google – oder alles?)" rows="4" required style="width:100%;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);border-radius:12px;padding:14px 18px;font-size:15px;color:white;resize:vertical;font-family:inherit;"></textarea>
+      </div>
+      <div style="margin-top:16px;">
+        <button type="submit" class="btn-white" id="submit-btn">Kostenlose Beratung anfragen</button>
+      </div>
+    </form>
   </div>
 </section>
 
 <footer>
   <div class="footer-inner">
-    <span>© 2026 Digizo </span>
-
+    <span>© 2026 Digizo · Maxim Taube</span>
     <div class="footer-links">
       <a href="/impressum">Impressum</a>
       <a href="/datenschutz">Datenschutz</a>
     </div>
   </div>
 </footer>
+
+<script src="three.min.js" onerror="window.THREE=null"></script>
 <script>
-/* ===== THREE.JS – subtle blue 3D background behind hero ===== */
-let scene, camera, renderer, particles, netLines, mouseX=0, mouseY=0;
+let scene,camera,renderer,particles,netLines,mouseX=0,mouseY=0;
 function initThree(){
   const canvas=document.getElementById('bg-canvas');
   const wrap=canvas.parentElement;
@@ -441,42 +474,35 @@ function initThree(){
   renderer=new THREE.WebGLRenderer({canvas,alpha:true,antialias:true});
   renderer.setSize(wrap.clientWidth,wrap.clientHeight);
   renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
-
-  // floating points in blue tones
   const count=window.innerWidth<600?500:1000;
   const pos=new Float32Array(count*3);
   const col=new Float32Array(count*3);
-  const cA=new THREE.Color(0x2563eb), cB=new THREE.Color(0x60a5fa), cC=new THREE.Color(0x93c5fd);
+  const cA=new THREE.Color(0x2563eb),cB=new THREE.Color(0x60a5fa),cC=new THREE.Color(0x93c5fd);
   for(let i=0;i<count;i++){
-    pos[i*3]=(Math.random()-0.5)*80;
-    pos[i*3+1]=(Math.random()-0.5)*70;
-    pos[i*3+2]=(Math.random()-0.5)*50;
-    const m=Math.random();const c=m<0.4?cA:(m<0.7?cB:cC);
+    pos[i*3]=(Math.random()-.5)*80;pos[i*3+1]=(Math.random()-.5)*70;pos[i*3+2]=(Math.random()-.5)*50;
+    const m=Math.random();const c=m<.4?cA:(m<.7?cB:cC);
     col[i*3]=c.r;col[i*3+1]=c.g;col[i*3+2]=c.b;
   }
   const g=new THREE.BufferGeometry();
   g.setAttribute('position',new THREE.BufferAttribute(pos,3));
   g.setAttribute('color',new THREE.BufferAttribute(col,3));
-  particles=new THREE.Points(g,new THREE.PointsMaterial({size:0.4,vertexColors:true,transparent:true,opacity:0.7}));
+  particles=new THREE.Points(g,new THREE.PointsMaterial({size:.4,vertexColors:true,transparent:true,opacity:.7}));
   scene.add(particles);
-
-  // rotating wireframe sphere
-  const sphereGeo=new THREE.IcosahedronGeometry(9,1);
-  const sphereMat=new THREE.MeshBasicMaterial({color:0x3b82f6,wireframe:true,transparent:true,opacity:0.12});
-  netLines=new THREE.Mesh(sphereGeo,sphereMat);
+  const sGeo=new THREE.IcosahedronGeometry(9,1);
+  const sMat=new THREE.MeshBasicMaterial({color:0x3b82f6,wireframe:true,transparent:true,opacity:.12});
+  netLines=new THREE.Mesh(sGeo,sMat);
   scene.add(netLines);
-
-  document.addEventListener('mousemove',e=>{mouseX=(e.clientX/window.innerWidth-0.5)*2;mouseY=(e.clientY/window.innerHeight-0.5)*2;});
+  document.addEventListener('mousemove',e=>{mouseX=(e.clientX/window.innerWidth-.5)*2;mouseY=(e.clientY/window.innerHeight-.5)*2;});
   window.addEventListener('resize',onResize);
   animate();
 }
 function animate(){
   requestAnimationFrame(animate);
-  const t=Date.now()*0.0001;
-  if(particles){particles.rotation.y=t*1.5;particles.rotation.x=t*0.6;}
-  if(netLines){netLines.rotation.y+=0.002;netLines.rotation.x+=0.0015;}
-  camera.position.x+=(mouseX*3-camera.position.x)*0.04;
-  camera.position.y+=(-mouseY*3-camera.position.y)*0.04;
+  const t=Date.now()*.0001;
+  if(particles){particles.rotation.y=t*1.5;particles.rotation.x=t*.6;}
+  if(netLines){netLines.rotation.y+=.002;netLines.rotation.x+=.0015;}
+  camera.position.x+=(mouseX*3-camera.position.x)*.04;
+  camera.position.y+=(-mouseY*3-camera.position.y)*.04;
   camera.lookAt(scene.position);
   renderer.render(scene,camera);
 }
@@ -486,10 +512,9 @@ function onResize(){
   camera.updateProjectionMatrix();
   renderer.setSize(wrap.clientWidth,wrap.clientHeight);
 }
-if(window.THREE) initThree();
+if(window.THREE)initThree();
 
-/* reveal */
-const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.1});
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:.1});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
 function toggleFaq(btn){
@@ -497,27 +522,18 @@ function toggleFaq(btn){
   document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
   if(!wasOpen)item.classList.add('open');
 }
+
 async function handleSubmit(e){
   e.preventDefault();
   const btn=document.getElementById('submit-btn');
-  btn.textContent='Wird gesendet...';
-  btn.disabled=true;
+  btn.textContent='Wird gesendet...';btn.disabled=true;
   const formData=new FormData(e.target);
   try{
     const res=await fetch('https://api.web3forms.com/submit',{method:'POST',body:formData});
     const data=await res.json();
-    if(data.success){
-      btn.textContent='Gesendet – ich melde mich bald ✓';
-      btn.style.background='#16a34a';
-      e.target.reset();
-    } else {
-      btn.textContent='Fehler – bitte erneut versuchen';
-      btn.disabled=false;
-    }
-  } catch(err){
-    btn.textContent='Fehler – bitte erneut versuchen';
-    btn.disabled=false;
-  }
+    if(data.success){btn.textContent='Gesendet – ich melde mich bald ✓';btn.style.background='#16a34a';e.target.reset();}
+    else{btn.textContent='Fehler – bitte erneut versuchen';btn.disabled=false;}
+  }catch(err){btn.textContent='Fehler – bitte erneut versuchen';btn.disabled=false;}
 }
 </script>
 </body>
