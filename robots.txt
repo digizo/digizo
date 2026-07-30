@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://digizo.de/sitemap.xml
